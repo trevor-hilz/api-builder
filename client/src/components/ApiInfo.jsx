@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import DisplayPage from './DisplayPage';
 
 const ApiInfo = () => {
   const [getImg, setImg] = useState('dogs');
-  const [getCat, setCat] = useState('');
-  const [getDog, setDog] = useState('');
+  const [getSwapi, setSwapi] = useState(null);
 
   useEffect(() => {
-    // controller.cats();
-    controller.dogs();
+    swapi.first();
   }, []);
 
   const controller = {
@@ -15,12 +14,9 @@ const ApiInfo = () => {
       const url = 'https://api.thecatapi.com/v1/images/0XYvRd7oD';
       try {
         const res = await fetch(url);
-        if (!res.ok) {
-          throw new Error(`Response status: ${res.status}`);
-        }
+        if (!res.ok) throw new Error(`Response status: ${res.status}`);
+
         const json = await res.json();
-        console.log('THIS IS JSON: ', json);
-        console.log(json.url);
         setImg(json.url);
       } catch (error) {
         console.error(error.message);
@@ -38,8 +34,8 @@ const ApiInfo = () => {
           },
         });
         if (!res.ok) throw new Error(res.status);
+
         const data = await res.json();
-        console.log('DOG JSON: ', data);
         setImg(data[0].url);
       } catch (error) {
         console.error(error.message);
@@ -47,13 +43,33 @@ const ApiInfo = () => {
     },
   };
 
-  return (
-    <div>
-      <button onClick={controller.cats}>CAT</button>
-      <button onClick={controller.dogs}>DOG</button>
-      <img className='image' src={getImg} />
-    </div>
-  );
+  const swapi = {
+    first: async function getFirstSwapi() {
+      const url = 'http://swapi.dev/api/planets/';
+      try {
+        const res = await fetch(url);
+        if (!res.ok) throw new Error(`Response Status: ${res.status}`);
+
+        const data = await res.json();
+        setSwapi(data); // Store parsed data in state
+      } catch (error) {
+        console.error(error.message);
+      }
+    },
+  };
+
+  if (!getSwapi) {
+    return <div>Loading...</div>;
+  } else {
+    return (
+      <div>
+        <button onClick={controller.cats}>CAT</button>
+        <button onClick={controller.dogs}>DOG</button>
+        <img className='image' src={getImg} alt='Random animal' />
+        {getSwapi ? <DisplayPage swapi={getSwapi} /> : <div>Loading...</div>}
+      </div>
+    );
+  }
 };
 
 export default ApiInfo;

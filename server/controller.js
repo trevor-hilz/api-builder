@@ -1,15 +1,16 @@
 import { response } from 'express';
 
 const controller = {
-  cats: async function getCats() {
-    const url = 'https://api.thecatapi.com/v1/images/0XYvRd7oD';
+  swapi: async function getSwapi(req, res, next) {
+    const url = 'http://swapi.dev/api/planets/1/';
     try {
       const res = await fetch(url);
-      if (!res.ok) {
-        throw new Error(`Response status: ${response.status}`);
-      }
-      const json = await res.json();
-      console.log(json);
+      if (!res.ok) throw new Error('Response Status: ', res.status);
+
+      const data = res.json();
+      console.log(data);
+      res.locals.swapi = data;
+      next();
     } catch (error) {
       console.error(error.message);
     }

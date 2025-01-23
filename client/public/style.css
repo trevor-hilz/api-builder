@@ -5,3 +5,20 @@ body {
 .image {
   max-width: 600px;
 }
+
+.swapiBullet {
+  list-style: none;
+}
+
+.styleCard {
+  display: flex;
+  flex: 0 0 200px;
+  border: 1px black solid;
+}
+
+.allCards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 50px;
+  justify-content: center;
+}
