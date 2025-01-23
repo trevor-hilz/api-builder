@@ -25,7 +25,7 @@ const config = {
         },
       },
       {
-        test: /\.css$/, // This handles .css files
+        test: /\.css$/,
         use: ['style-loader', 'css-loader'],
       },
     ],
