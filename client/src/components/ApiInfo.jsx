@@ -4,6 +4,7 @@ import DisplayPage from './DisplayPage';
 const ApiInfo = () => {
   const [getImg, setImg] = useState('dogs');
   const [getSwapi, setSwapi] = useState(null);
+  const [gethttpDogs, setHttpDogs] = useState('');
 
   useEffect(() => {
     swapi.first();
@@ -41,6 +42,20 @@ const ApiInfo = () => {
         console.error(error.message);
       }
     },
+
+    httpDogs: async function httpDogs() {
+      const url = 'https://http.dog/404.json';
+      try {
+        const res = await fetch(url);
+        console.log(res);
+        if (!res.ok) throw new Error(`response status: ${res.status}`);
+        const data = await res.json();
+        console.log('httpDogs: ', data);
+        setHttpDogs(data);
+      } catch (error) {
+        console.error(error.message);
+      }
+    },
   };
 
   const swapi = {
@@ -51,7 +66,7 @@ const ApiInfo = () => {
         if (!res.ok) throw new Error(`Response Status: ${res.status}`);
 
         const data = await res.json();
-        setSwapi(data); // Store parsed data in state
+        setSwapi(data);
       } catch (error) {
         console.error(error.message);
       }
@@ -67,6 +82,8 @@ const ApiInfo = () => {
         <button onClick={controller.dogs}>DOG</button>
         <img className='image' src={getImg} alt='Random animal' />
         {getSwapi ? <DisplayPage swapi={getSwapi} /> : <div>Loading...</div>}
+        <button onClick={controller.httpDogs}>HttpDogs</button>
+        {gethttpDogs}
       </div>
     );
   }
