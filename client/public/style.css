@@ -6,7 +6,7 @@ body {
   max-width: 600px;
 }
 
-.swapiBullet {
+.swapiItem {
   list-style: none;
 }
 
@@ -16,7 +16,7 @@ body {
   border: 1px black solid;
 }
 
-.allCards {
+.SwapiCards {
   display: flex;
   flex-wrap: wrap;
   gap: 50px;
