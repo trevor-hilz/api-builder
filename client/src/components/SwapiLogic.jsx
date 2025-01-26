@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import SwapiPres from './SwapiPres';
+//comment;
 
 const SwapiLogic = () => {
   const [getSwapi, setSwapi] = useState('');
