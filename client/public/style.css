@@ -6,19 +6,17 @@ body {
   max-width: 600px;
 }
 
+.swapiCards {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.swapiCard {
+  border: 1px black solid;
+  width: 200px;
+}
+
 .swapiItem {
   list-style: none;
-}
-
-.styleCard {
-  display: flex;
-  flex: 0 0 200px;
-  border: 1px black solid;
-}
-
-.SwapiCards {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 50px;
-  justify-content: center;
 }

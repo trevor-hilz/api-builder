@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import SwapiPres from './SwapiPres';
-//comment;
 
 const SwapiLogic = () => {
   const [getSwapi, setSwapi] = useState('');
@@ -17,7 +16,7 @@ const SwapiLogic = () => {
         if (!res.ok) throw new Error(`Response Status: ${res.status}`);
 
         const data = await res.json();
-        console.log('SWAPI DATA: ', data);
+        console.log('swapi data: ', data);
         setSwapi(data);
       } catch (error) {
         console.error(error.message);
@@ -25,11 +24,9 @@ const SwapiLogic = () => {
     },
   };
 
-  const name = getSwapi.name;
-
   return (
     <div>
-      {getSwapi ? <SwapiPres swapi={getSwapi} /> : <div>Loading...</div>}
+      <SwapiPres swapi={getSwapi} />
     </div>
   );
 };

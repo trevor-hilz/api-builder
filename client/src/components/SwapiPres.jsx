@@ -1,39 +1,34 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
 const SwapiPres = ({ swapi }) => {
-  const list = [];
-
   if (!swapi) {
     return <div>Loading...</div>;
   } else {
     return (
-      <div className='SwapiCards'>
+      <div className='swapiCards'>
         {swapi.results.map((item) => (
-          <div className='styleCard'>
+          <div className='swapiCard'>
             <ul>
-              <li className='swapiItem' key={item.id}>
+              <li className='swapiItem' item={item.id}>
                 {item.name}
               </li>
-              <li className='swapiItem' key={item.id}>
+              <li className='swapiItem' item={item.id}>
                 {item.climate}
               </li>
-              <li className='swapiItem' key={item.id}>
+              <li className='swapiItem' item={item.id}>
                 {item.population}
               </li>
-              <li className='swapiItem' key={item.id}>
-                {item.diameter}
+              <li className='swapiItem' item={item.id}>
+                {item.terrain}
               </li>
-              <li className='swapiItem' key={item.id}>
-                {item.created}
-              </li>
-              <li className='swapiItem' key={item.id}>
+              <li className='swapiItem' item={item.id}>
                 {item.orbital_period}
               </li>
-              <li className='swapiItem' key={item.id}>
-                {item.surface_water}
+              <li className='swapiItem' item={item.id}>
+                {item.rotation}
               </li>
-              <li className='swapiItem' key={item.id}>
-                {item.terrain}
+              <li className='swapiItem' item={item.id}>
+                {item.diameter}
               </li>
             </ul>
           </div>
