@@ -1,6 +1,6 @@
 import React from 'react';
 
-const SwapiPres = ({ swapi }) => {
+const SwapiPres = ({ swapi, testDB }) => {
   if (!swapi) {
     return <div>Loading...</div>;
   } else {
@@ -33,6 +33,21 @@ const SwapiPres = ({ swapi }) => {
             </ul>
           </div>
         ))}
+        <div className='swapiCards'>
+          {testDB.map((item) => (
+            <div className='swapiCard'>
+              <li className='swapiItem' item={item.id}>
+                {item.userId}
+              </li>
+              <li className='swapiItem' item={item.id}>
+                {item.title}
+              </li>
+              <li className='swapiItem' item={item.id}>
+                {item.body}
+              </li>
+            </div>
+          ))}
+        </div>
       </div>
     );
   }
