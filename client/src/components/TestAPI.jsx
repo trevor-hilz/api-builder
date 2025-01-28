@@ -46,6 +46,9 @@ const TestAPI = () => {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
       });
+      // const data = await res.json();
+      // const newData = await fetch(url);
+      // setDB(newData);
       setDB((prev) => prev.filter((item) => item.userId !== zero));
     } catch (error) {
       console.error(error.message);
