@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import ApiPres from './ApiPres';
+import { Pool } from 'pg';
+import fs from 'pg';
 
 const ApiLogic = () => {
   const [GetDB, SetDB] = useState([]);
@@ -36,7 +38,7 @@ const ApiLogic = () => {
   const exampleVariable = 1;
 
   const deleteDB = useCallback(async () => {
-    const url = 'https://jsonplaceholder.typicode.com/todos/';
+    const url = `https://jsonplaceholder.typicode.com/todos/${exampleVariable}`;
     try {
       const res = await fetch(url, {
         method: 'DELETE',
@@ -58,7 +60,7 @@ const ApiLogic = () => {
       <button onClick={fetchDB}>Fetch DB</button>
       <button onClick={postDB}>Post DB</button>
       <button onClick={deleteDB}>Delete DB</button>
-      <ApiPres data={GetDB} />
+      {GetDB ? <ApiPres data={GetDB} /> : <div>Loading...</div>}
     </div>
   );
 };

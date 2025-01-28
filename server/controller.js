@@ -1,6 +1,13 @@
 import { response } from 'express';
 
 const controller = {
+  database: async function getData(req, res, next) {
+    const url = '';
+    try {
+    } catch (error) {
+      console.error(error.message);
+    }
+  },
   swapi: async function getSwapi(req, res, next) {
     const url = 'http://swapi.dev/api/planets/1/';
     try {
@@ -16,3 +23,5 @@ const controller = {
     }
   },
 };
+
+export default controller;
