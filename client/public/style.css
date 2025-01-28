@@ -20,3 +20,17 @@ body {
 .swapiItem {
   list-style: none;
 }
+
+.apiItem {
+  list-style: none;
+}
+
+.apiCard {
+  width: 200px;
+  border: 1px black solid;
+}
+
+.apiCards {
+  display: flex;
+  flex-wrap: wrap;
+}
