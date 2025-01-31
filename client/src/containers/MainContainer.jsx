@@ -1,10 +1,10 @@
-import ApiInfo from '../components/ApiInfo';
 import React from 'react';
+import ApiLogic from '../components/ApiLogic.jsx';
 
 const MainContainer = () => {
   return (
     <div>
-      <ApiInfo />
+      <ApiLogic />
     </div>
   );
 };

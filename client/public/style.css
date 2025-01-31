@@ -1,3 +1,26 @@
 body {
   background-color: rgb(161, 161, 226);
 }
+
+.image {
+  max-width: 600px;
+}
+
+.allApiCards {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.eachApiCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px black solid;
+  width: 150px;
+  margin: 1em;
+}
+
+.eachApiItem {
+  list-style: none;
+}
