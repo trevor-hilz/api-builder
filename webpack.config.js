@@ -35,12 +35,26 @@ const config = {
   },
   mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
   devServer: {
-    port: 3001,
-    static: {
-      directory: path.join(__dirname, 'dist'),
-    },
-    compress: true,
+    port: 3000,
     hot: true,
+    liveReload: true,
+    allowedHosts: 'all',
+    client: {
+      webSocketURL: 'ws://localhost:3000/ws',
+    },
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+    },
+    proxy: [
+      {
+        '/request': {
+          target: 'http://localhost:8080',
+          changeOrigin: true,
+          secure: false,
+          logLevel: 'debug',
+        },
+      },
+    ],
   },
   plugins: [
     new HtmlWebpackPlugin({

@@ -1,8 +1,7 @@
 import express, { response } from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import request from './router.js';
-import sequelize from './model.js';
+import requestRouter from './router.js';
 import cors from 'cors';
 import 'dotenv/config';
 
@@ -10,17 +9,20 @@ const port = 8080;
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const app = express();
-sequelize;
+
+app.use(express.json());
 
 const corsOptions = {
   origin: '*',
-  optionSuccessStatus: 200,
+  methods: 'GET,POST,PUT,DELETE,OPTIONS',
+  allowedHeaders: 'Content-Type,Authorization',
 };
+
 app.options('*', cors(corsOptions));
 app.use(cors(corsOptions));
 
 app.use(express.static(path.join(__dirname, '../dist')));
-app.use('/request', request);
+app.use('/request', requestRouter);
 
 app.get('*', (req, res) => {
   return res.sendFile(path.resolve(__dirname, '../dist', 'index.html'));

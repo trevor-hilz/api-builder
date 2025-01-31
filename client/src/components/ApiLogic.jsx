@@ -5,7 +5,7 @@ const ApiLogic = () => {
   const [GetDB, SetDB] = useState([]);
 
   const fetchDB = useCallback(async () => {
-    const url = 'https://jsonplaceholder.typicode.com/todos/';
+    const url = '/request/posts';
     try {
       const res = await fetch(url);
       if (!res.ok) throw new Error(`RESPONSE STATUS: ${res.status}`);

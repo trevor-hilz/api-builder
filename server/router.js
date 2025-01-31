@@ -1,9 +1,17 @@
-import controller from './controller.js';
 import express from 'express';
+import controller from './controller.js';
+
 const router = express.Router();
 
-router.get('/swapi/', controller.swapi, (req, res, next) => {
-  return res.status(200).json(res.locals.swapi);
-});
+// ✅ Log when routes are being used
+router.get(
+  '/posts',
+  (req, res, next) => {
+    console.log('ENTERING ROUTER');
+    console.log('🔹 GET /request/posts was called');
+    next();
+  },
+  controller.fetchPosts
+);
 
 export default router;
